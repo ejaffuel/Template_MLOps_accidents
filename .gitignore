@@ -8,6 +8,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 env/
+env_dvc/
 myenv/
 my_env/
 venv/
