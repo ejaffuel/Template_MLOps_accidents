@@ -17,12 +17,14 @@ def main(input_filepath, output_filepath):
     logger = logging.getLogger(__name__)
     logger.info('making final data set from raw data')
 
-    input_filepath = click.prompt('Enter the file path for the input data', type=click.Path(exists=True))
+    input_filepath = "./data/raw" #click.prompt('Enter the file path for the input data', type=click.Path(exists=True))
+    #print(input_filepath)
     input_filepath_users = f"{input_filepath}/usagers-2021.csv"
     input_filepath_caract = f"{input_filepath}/caracteristiques-2021.csv"
     input_filepath_places = f"{input_filepath}/lieux-2021.csv"
     input_filepath_veh = f"{input_filepath}/vehicules-2021.csv"
-    output_filepath = click.prompt('Enter the file path for the output preprocessed data (e.g., output/preprocessed_data.csv)', type=click.Path())
+    output_filepath = "./data/preprocessed" # click.prompt('Enter the file path for the output preprocessed data (e.g., output/preprocessed_data.csv)', type=click.Path())
+    #print(output_filepath)
 
     process_data(input_filepath_users, input_filepath_caract, input_filepath_places, input_filepath_veh, output_filepath)
 
@@ -55,7 +57,7 @@ def process_data(input_filepath_users, input_filepath_caract, input_filepath_pla
     df = merge_datasets(df_users, df_veh, df_places, df_caract)
 
     # # Add new columns
-    # df = add_new_columns(df, nb_victim, nb_vehicules)
+    df = add_new_columns(df, nb_victim, nb_vehicules)
 
     # # Modify target variable
     # df = modif_target_variable(df)
